@@ -1,0 +1,60 @@
+{
+  "rolled": [
+    2,
+    2,
+    3,
+    3,
+    3,
+    5
+  ],
+  "withScoringCombinations": [
+    {
+      "score": 100,
+      "face": 1,
+      "kind": 1,
+      "scoringCombinations": 1
+    },
+    {
+      "score": 50,
+      "face": 5,
+      "kind": 1,
+      "scoringCombinations": 1
+    },
+    {
+      "score": 1000,
+      "face": 1,
+      "kind": 3,
+      "scoringCombinations": 0.3333333333333333
+    },
+    {
+      "score": 200,
+      "face": 2,
+      "kind": 3,
+      "scoringCombinations": 0.3333333333333333
+    },
+    {
+      "score": 300,
+      "face": 3,
+      "kind": 3,
+      "scoringCombinations": 1
+    },
+    {
+      "score": 400,
+      "face": 4,
+      "kind": 3,
+      "scoringCombinations": 0
+    },
+    {
+      "score": 500,
+      "face": 5,
+      "kind": 3,
+      "scoringCombinations": 0.3333333333333333
+    },
+    {
+      "score": 600,
+      "face": 6,
+      "kind": 3,
+      "scoringCombinations": 0
+    }
+  ]
+}
