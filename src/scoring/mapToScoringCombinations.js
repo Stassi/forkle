@@ -4,23 +4,41 @@ import {
   pipe,
   propOr,
 } from 'ramda';
-import histogram from '../histogram';
+import toHistogramOfRolled from '../toHistogramOfRolled';
 
-const propOrZero = propOr(0);
-const scoringCombinations = pipe(propOrZero, divide);
-
-// TODO: Simplify
-const mapToScoringCombinations = ({ rolled, scoring }) => map(
-  ({ face, kind, ...props }) => ({
-    ...props,
+const scoringCombinations = ({
+  face,
+  histogramOfRolled,
+  kind,
+}) => divide(
+  propOr(
+    0,
     face,
+    histogramOfRolled,
+  ),
+  kind,
+);
+
+const toScoringCombinations = histogramOfRolled => ({ face, kind, ...props }) => ({
+  ...props,
+  face,
+  kind,
+  scoringCombinations: scoringCombinations({
+    face,
+    histogramOfRolled,
     kind,
-    scoringCombinations: scoringCombinations(
-      face,
-      histogram(rolled),
-    )(kind),
   }),
+});
+
+// TODO: Rename, simplify
+const debug = ({ histogramOfRolled, scoring }) => map(
+  toScoringCombinations(histogramOfRolled),
   scoring,
+);
+
+const mapToScoringCombinations = pipe(
+  toHistogramOfRolled,
+  debug,
 );
 
 export default mapToScoringCombinations;
