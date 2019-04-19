@@ -1,14 +1,5 @@
-import {
-  add,
-  map,
-  mergeWith,
-  pipe,
-  reduce,
-} from 'ramda';
+import { countBy, identity } from 'ramda';
 
-const mergeWithAdd = mergeWith(add);
-const additiveMerge = reduce(mergeWithAdd, {});
-const keyOfWeightOne = map(x => ({ [x]: 1 }));
-const histogram = pipe(keyOfWeightOne, additiveMerge);
+const histogram = countBy(identity);
 
 export default histogram;
