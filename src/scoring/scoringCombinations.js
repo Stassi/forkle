@@ -28,7 +28,12 @@ const toScoringCombinations = histogramOfRolled => pipe(
    }) => ({
     ...props,
     kind,
-    scoringCombinations: divideByOccurrences(kind),
+    totalScoringCombinations: divideByOccurrences(kind),
+  }),
+  ({ totalScoringCombinations, ...props }) => ({
+    ...props,
+    totalScoringCombinations,
+    completeScoringCombinations: Math.floor(totalScoringCombinations),
   }),
 );
 
