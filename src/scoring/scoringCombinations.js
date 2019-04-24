@@ -5,6 +5,7 @@ import {
   pipe,
   propOr,
 } from 'ramda';
+import filterValidScoringCombinations from './filterValidScoringCombinations';
 import histogram from '../histogram';
 
 const propOrZero = propOr(0);
@@ -32,8 +33,7 @@ const toScoringCombinations = histogramOfRolled => pipe(
   }),
   ({ totalScoringCombinations, ...props }) => ({
     ...props,
-    totalScoringCombinations,
-    completeScoringCombinations: Math.floor(totalScoringCombinations),
+    scoringCombinations: Math.floor(totalScoringCombinations),
   }),
 );
 
@@ -49,6 +49,7 @@ const scoringCombinations = pipe(
     analyzeRolled: mapToScoringCombinations(rolled),
   }),
   ({ analyzeRolled, scoring }) => analyzeRolled(scoring),
+  filterValidScoringCombinations,
 );
 
 export default scoringCombinations;
